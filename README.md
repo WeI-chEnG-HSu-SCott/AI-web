@@ -49,16 +49,25 @@ node scripts/e2e-test.mjs
 
 此 Windows 開發環境沒有偵測到 Nginx，因此 `nginx -t` 與真實 Nginx access log 驗收是部署後 **MANUAL**。
 
-## 正式網域與搜尋 metadata（必做）
+## 正式網域與搜尋 metadata
 
-在你有正式 HTTPS 網域後，執行一次（不要用示例文字當網域）：
+正式 HTTPS 網域為 `https://come-is.site`。每次新增、移除或改名公開 HTML 頁面後，執行：
 
 ```powershell
-$env:SITE_ORIGIN = 'https://www.your-real-domain.tld'
+$env:SITE_ORIGIN = 'https://come-is.site'
+node scripts/generate-public-metadata.mjs
+node scripts/verify-public-metadata.mjs
+```
+
+這會為 `public/` 下每個 HTML 頁產生 canonical，並建立、更新且追蹤 `public/robots.txt` 與 `public/sitemap.xml`。所有公開頁面允許一般搜尋爬蟲、`OAI-SearchBot` 與 `GPTBot`；也就是允許搜尋發現與 OpenAI 的模型訓練爬取。若 Google 或 Bing 要求 HTML meta 驗證，在同一個 PowerShell 視窗設定其提供的值後重跑：
+
+```powershell
+$env:GOOGLE_SITE_VERIFICATION = 'Google 提供的 verification token'
+$env:BING_SITE_VERIFICATION = 'Bing 提供的 verification token'
 node scripts/generate-public-metadata.mjs
 ```
 
-這會為每個 HTML 頁產生 canonical，並建立 `public/robots.txt` 與 `public/sitemap.xml`。預設允許 `OAI-SearchBot`、禁止 `GPTBot`；是否允許 GPTBot 是網站所有者的內容政策決定。新增文章時：複製 `public/articles/example.html`、修改唯一 title/description/h1 與內容、加入普通 `<a href>` 導覽，並把新檔加入 `pages` 陣列後重跑產生器。
+請只填 token，不要填整段 `<meta>` HTML。新增文章時：複製 `public/articles/example.html`、修改唯一 title/description/h1 與內容、加入普通 `<a href>` 導覽，然後重跑產生器。
 
 ## Cloudflare Tunnel（部署後手動）
 
@@ -66,7 +75,20 @@ node scripts/generate-public-metadata.mjs
 2. 新增 Published application：hostname 選你的公開網域，Service URL 指向 `http://localhost:80`（Nginx）。
 3. **不要**建立任何指向 port 8787（collector）的公開 route。
 4. 從另一個網路以 `curl -I` 檢查首頁、robots、sitemap、文章皆為 200，並檢查 canonical 與 TLS。
-5. 在 Google Search Console 與 Bing Webmaster Tools 驗證網域、提交 sitemap；這些行為不保證收錄或 AI 引用。
+5. 在 Google Search Console 與 Bing Webmaster Tools 驗證 `come-is.site`，提交 `https://come-is.site/sitemap.xml`；這些行為不保證收錄或 AI 引用。
+
+## 外網可見性與 Cloudflare 驗收
+
+部署後，從不在來源主機上的網路執行下列檢查。四個請求都必須回傳 `200`，且不得出現 Cloudflare challenge、登入頁或 CAPTCHA HTML：
+
+```powershell
+curl.exe -I https://come-is.site/
+curl.exe -I https://come-is.site/robots.txt
+curl.exe -I https://come-is.site/sitemap.xml
+curl.exe -A 'Mozilla/5.0; compatible; OAI-SearchBot/1.4; +https://openai.com/searchbot' -I https://come-is.site/
+```
+
+若最後一個請求收到 `403`、`429`、`503` 或 `cf-mitigated: challenge`，在 Cloudflare 的 **Security → Events** 用 URL 與時間找出規則；為已驗證的 `OAI-SearchBot` IP ranges 建立 Allow/Skip 規則，避免對該爬蟲套用 WAF、Bot Fight Mode、Rate Limiting 與 Managed Challenge。不要只信任 User-Agent；依 [OpenAI 公開 IP 清單](https://openai.com/searchbot.json) 驗證來源 IP。重新測試並確認 robots/sitemap 同樣沒有挑戰。
 
 ## 驗收狀態
 

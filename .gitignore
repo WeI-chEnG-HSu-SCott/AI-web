@@ -4,7 +4,5 @@ node_modules/
 logs/
 *.log
 collector/data/
-public/robots.txt
-public/sitemap.xml
 public/**/*.generated.html
 

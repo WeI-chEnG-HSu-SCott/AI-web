@@ -1,0 +1,13 @@
+# Public pages may be crawled for search discovery and AI training.
+User-agent: *
+Allow: /
+
+# Allow ChatGPT Search discovery.
+User-agent: OAI-SearchBot
+Allow: /
+
+# Allow OpenAI model-training crawls.
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://come-is.site/sitemap.xml

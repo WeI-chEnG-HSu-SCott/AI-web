@@ -32,7 +32,7 @@ Every article must add a clear contribution: news of AI, an observation, an diag
 1. Add or update one archive entry with its title, relative URL, and truthful published date. Display newest items first.
 2. Update the previous/next links in the new article and its two adjacent articles. Do not link to drafts or deleted files.
 3. Keep each article reachable through ordinary HTML links from the archive. Do not depend on JavaScript for article discovery.
-4. Add the new page to the `pages` array in `scripts/generate-public-metadata.mjs`, then regenerate metadata for the production HTTPS origin.
+4. Regenerate metadata after every publish, update, unpublish, rename, or reorder. The generator automatically discovers every `.html` file under `public/`; never manually edit the sitemap or a page list in the generator.
 
 ## Search and sharing checklist
 
@@ -42,12 +42,23 @@ Every article must add a clear contribution: news of AI, an observation, an diag
 - Claims are sourced, images are licensed, and the article adds original analysis or evidence rather than a rewrite of a source.
 - The archive date, JSON-LD date, pagination, sitemap entry, canonical URL, and visible publication date agree.
 
-## Generate metadata and test locally
+## Generate metadata, test, and deploy
+
+After all article, archive, and pagination edits are complete, run:
 
 ```powershell
-$env:SITE_ORIGIN = 'https://www.your-real-domain.tld'
+$env:SITE_ORIGIN = 'https://come-is.site'
 node scripts/generate-public-metadata.mjs
+node scripts/verify-public-metadata.mjs
 node scripts/local-static-server.mjs
 ```
 
-Open the article and archive in a browser. Confirm that the header/footer match the home page, pagination points to published neighbours, every archive URL works, and the sitemap includes the article. Never leave an example domain in public files.
+Open the article and archive in a browser. Confirm that the header/footer match the home page, pagination points to published neighbours, every archive URL works, and the sitemap includes the article. Stop the local server when finished, then commit and deploy **all** changed files, including the article, archive, neighbouring articles, `public/robots.txt`, `public/sitemap.xml`, and canonical changes. Never leave an example domain in public files.
+
+## Required publishing sequence
+
+1. Create or edit the article and its image assets.
+2. Update archive order and previous/next navigation.
+3. Run the metadata generator and verification command above.
+4. Review the generated sitemap and canonical URL, then deploy every changed file together.
+5. After deployment, confirm `https://come-is.site/sitemap.xml` and the new article return HTTP 200. In Google Search Console, request indexing for the new article only when it is ready for public discovery.
