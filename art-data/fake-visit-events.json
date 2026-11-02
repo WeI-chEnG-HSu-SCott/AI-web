@@ -1,0 +1,1442 @@
+[
+  {
+    "event_id": "fake-0001",
+    "timestamp": "2026-10-26T14:00:00.000Z",
+    "client_ip": "198.51.100.20",
+    "client_port": 40000,
+    "method": "HEAD",
+    "path": "/",
+    "request_target": "/?topic=art&token=%5Bredacted%5D",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "https://search.example/?q=network+art",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 180,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.008,
+    "bytes_sent": 700
+  },
+  {
+    "event_id": "fake-0002",
+    "timestamp": "2026-10-26T14:00:01.230Z",
+    "client_ip": "198.51.100.21",
+    "client_port": 40031,
+    "method": "GET",
+    "path": "/articles/example.html",
+    "request_target": "/articles/example.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 222,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.039,
+    "bytes_sent": 1340
+  },
+  {
+    "event_id": "fake-0003",
+    "timestamp": "2026-10-26T14:00:03.520Z",
+    "client_ip": "198.51.100.22",
+    "client_port": 40062,
+    "method": "GET",
+    "path": "/sitemap.xml",
+    "request_target": "/sitemap.xml",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 264,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.07,
+    "bytes_sent": 1980
+  },
+  {
+    "event_id": "fake-0004",
+    "timestamp": "2026-10-26T14:00:06.870Z",
+    "client_ip": "198.51.100.23",
+    "client_port": 40093,
+    "method": "GET",
+    "path": "/experiments/",
+    "request_target": "/experiments/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "GPTBot/1.2",
+    "referer": "",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 306,
+    "bot_family": "gptbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.101,
+    "bytes_sent": 2620
+  },
+  {
+    "event_id": "fake-0005",
+    "timestamp": "2026-10-26T14:00:11.280Z",
+    "client_ip": "198.51.100.24",
+    "client_port": 40124,
+    "method": "GET",
+    "path": "/robots.txt",
+    "request_target": "/robots.txt",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/2.0",
+    "status": 304,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "\"Chromium\";v=\"130\"",
+      "platform": "\"macOS\""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 348,
+    "bot_family": "unknown",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.132,
+    "bytes_sent": 0
+  },
+  {
+    "event_id": "fake-0006",
+    "timestamp": "2026-10-26T14:00:03.500Z",
+    "client_ip": "198.51.100.25",
+    "client_port": 40155,
+    "method": "GET",
+    "path": "/about.html",
+    "request_target": "/about.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 404,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 390,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.163,
+    "bytes_sent": 3900
+  },
+  {
+    "event_id": "fake-0007",
+    "timestamp": "2026-10-26T14:00:07.380Z",
+    "client_ip": "198.51.100.26",
+    "client_port": 40186,
+    "method": "GET",
+    "path": "/assets/style.css",
+    "request_target": "/assets/style.css",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 429,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "https://search.example/?q=network+art",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 432,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.194,
+    "bytes_sent": 4540
+  },
+  {
+    "event_id": "fake-0008",
+    "timestamp": "2026-10-26T14:00:12.320Z",
+    "client_ip": "198.51.100.27",
+    "client_port": 40217,
+    "method": "GET",
+    "path": "/",
+    "request_target": "/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 474,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.225,
+    "bytes_sent": 5180
+  },
+  {
+    "event_id": "fake-0009",
+    "timestamp": "2026-10-26T14:00:18.320Z",
+    "client_ip": "198.51.100.28",
+    "client_port": 40248,
+    "method": "GET",
+    "path": "/articles/example.html",
+    "request_target": "/articles/example.html",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "GPTBot/1.2",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 180,
+    "bot_family": "gptbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.256,
+    "bytes_sent": 5820
+  },
+  {
+    "event_id": "fake-0010",
+    "timestamp": "2026-10-26T14:00:25.380Z",
+    "client_ip": "198.51.100.29",
+    "client_port": 40279,
+    "method": "GET",
+    "path": "/sitemap.xml",
+    "request_target": "/sitemap.xml?topic=art&token=%5Bredacted%5D",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "referer": "",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "\"Chromium\";v=\"130\"",
+      "platform": "\"macOS\""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 222,
+    "bot_family": "unknown",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.287,
+    "bytes_sent": 700
+  },
+  {
+    "event_id": "fake-0011",
+    "timestamp": "2026-10-26T14:00:07.000Z",
+    "client_ip": "198.51.100.30",
+    "client_port": 40310,
+    "method": "GET",
+    "path": "/experiments/",
+    "request_target": "/experiments/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 264,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.318,
+    "bytes_sent": 1340
+  },
+  {
+    "event_id": "fake-0012",
+    "timestamp": "2026-10-26T14:00:13.530Z",
+    "client_ip": "198.51.100.31",
+    "client_port": 40341,
+    "method": "GET",
+    "path": "/robots.txt",
+    "request_target": "/robots.txt",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 304,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 306,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.008,
+    "bytes_sent": 0
+  },
+  {
+    "event_id": "fake-0013",
+    "timestamp": "2026-10-26T14:00:21.120Z",
+    "client_ip": "198.51.100.32",
+    "client_port": 40372,
+    "method": "GET",
+    "path": "/about.html",
+    "request_target": "/about.html",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/1.1",
+    "status": 404,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "https://search.example/?q=network+art",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 348,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.039,
+    "bytes_sent": 2620
+  },
+  {
+    "event_id": "fake-0014",
+    "timestamp": "2026-10-26T14:00:29.770Z",
+    "client_ip": "198.51.100.33",
+    "client_port": 40403,
+    "method": "HEAD",
+    "path": "/assets/style.css",
+    "request_target": "/assets/style.css",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 429,
+    "user_agent": "GPTBot/1.2",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 390,
+    "bot_family": "gptbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.07,
+    "bytes_sent": 3260
+  },
+  {
+    "event_id": "fake-0015",
+    "timestamp": "2026-10-26T14:00:39.480Z",
+    "client_ip": "198.51.100.34",
+    "client_port": 40434,
+    "method": "GET",
+    "path": "/",
+    "request_target": "/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "\"Chromium\";v=\"130\"",
+      "platform": "\"macOS\""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 432,
+    "bot_family": "unknown",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.101,
+    "bytes_sent": 3900
+  },
+  {
+    "event_id": "fake-0016",
+    "timestamp": "2026-10-26T14:00:10.500Z",
+    "client_ip": "198.51.100.35",
+    "client_port": 40465,
+    "method": "GET",
+    "path": "/articles/example.html",
+    "request_target": "/articles/example.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 474,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.132,
+    "bytes_sent": 4540
+  },
+  {
+    "event_id": "fake-0017",
+    "timestamp": "2026-10-26T14:00:19.680Z",
+    "client_ip": "198.51.100.36",
+    "client_port": 40496,
+    "method": "GET",
+    "path": "/sitemap.xml",
+    "request_target": "/sitemap.xml",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 180,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.163,
+    "bytes_sent": 5180
+  },
+  {
+    "event_id": "fake-0018",
+    "timestamp": "2026-10-26T14:00:29.920Z",
+    "client_ip": "198.51.100.37",
+    "client_port": 40527,
+    "method": "GET",
+    "path": "/experiments/",
+    "request_target": "/experiments/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 222,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.194,
+    "bytes_sent": 5820
+  },
+  {
+    "event_id": "fake-0019",
+    "timestamp": "2026-10-26T14:00:41.220Z",
+    "client_ip": "198.51.100.38",
+    "client_port": 40558,
+    "method": "GET",
+    "path": "/robots.txt",
+    "request_target": "/robots.txt?topic=art&token=%5Bredacted%5D",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 304,
+    "user_agent": "GPTBot/1.2",
+    "referer": "https://search.example/?q=network+art",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 264,
+    "bot_family": "gptbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.225,
+    "bytes_sent": 0
+  },
+  {
+    "event_id": "fake-0020",
+    "timestamp": "2026-10-26T14:00:53.580Z",
+    "client_ip": "198.51.100.39",
+    "client_port": 40589,
+    "method": "GET",
+    "path": "/about.html",
+    "request_target": "/about.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 404,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "\"Chromium\";v=\"130\"",
+      "platform": "\"macOS\""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 306,
+    "bot_family": "unknown",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.256,
+    "bytes_sent": 1340
+  },
+  {
+    "event_id": "fake-0021",
+    "timestamp": "2026-10-26T14:00:14.000Z",
+    "client_ip": "198.51.100.20",
+    "client_port": 40620,
+    "method": "GET",
+    "path": "/assets/style.css",
+    "request_target": "/assets/style.css",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/2.0",
+    "status": 429,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 348,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.287,
+    "bytes_sent": 1980
+  },
+  {
+    "event_id": "fake-0022",
+    "timestamp": "2026-10-26T14:00:25.830Z",
+    "client_ip": "198.51.100.21",
+    "client_port": 40651,
+    "method": "GET",
+    "path": "/",
+    "request_target": "/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 390,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.318,
+    "bytes_sent": 2620
+  },
+  {
+    "event_id": "fake-0023",
+    "timestamp": "2026-10-26T14:00:38.720Z",
+    "client_ip": "198.51.100.22",
+    "client_port": 40682,
+    "method": "GET",
+    "path": "/articles/example.html",
+    "request_target": "/articles/example.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 432,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.008,
+    "bytes_sent": 3260
+  },
+  {
+    "event_id": "fake-0024",
+    "timestamp": "2026-10-26T14:00:52.670Z",
+    "client_ip": "198.51.100.23",
+    "client_port": 40713,
+    "method": "GET",
+    "path": "/sitemap.xml",
+    "request_target": "/sitemap.xml",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "GPTBot/1.2",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 474,
+    "bot_family": "gptbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.039,
+    "bytes_sent": 3900
+  },
+  {
+    "event_id": "fake-0025",
+    "timestamp": "2026-10-26T14:01:07.680Z",
+    "client_ip": "198.51.100.24",
+    "client_port": 40744,
+    "method": "GET",
+    "path": "/experiments/",
+    "request_target": "/experiments/",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "referer": "https://search.example/?q=network+art",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "\"Chromium\";v=\"130\"",
+      "platform": "\"macOS\""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 180,
+    "bot_family": "unknown",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.07,
+    "bytes_sent": 4540
+  },
+  {
+    "event_id": "fake-0026",
+    "timestamp": "2026-10-26T14:00:17.500Z",
+    "client_ip": "198.51.100.25",
+    "client_port": 40775,
+    "method": "GET",
+    "path": "/robots.txt",
+    "request_target": "/robots.txt",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 304,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 222,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.101,
+    "bytes_sent": 0
+  },
+  {
+    "event_id": "fake-0027",
+    "timestamp": "2026-10-26T14:00:31.980Z",
+    "client_ip": "198.51.100.26",
+    "client_port": 40806,
+    "method": "HEAD",
+    "path": "/about.html",
+    "request_target": "/about.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 404,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 264,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.132,
+    "bytes_sent": 5820
+  },
+  {
+    "event_id": "fake-0028",
+    "timestamp": "2026-10-26T14:00:47.520Z",
+    "client_ip": "198.51.100.27",
+    "client_port": 40837,
+    "method": "GET",
+    "path": "/assets/style.css",
+    "request_target": "/assets/style.css?topic=art&token=%5Bredacted%5D",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 429,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 306,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.163,
+    "bytes_sent": 700
+  },
+  {
+    "event_id": "fake-0029",
+    "timestamp": "2026-10-26T14:01:04.120Z",
+    "client_ip": "198.51.100.28",
+    "client_port": 40868,
+    "method": "GET",
+    "path": "/",
+    "request_target": "/",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "GPTBot/1.2",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 348,
+    "bot_family": "gptbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.194,
+    "bytes_sent": 1340
+  },
+  {
+    "event_id": "fake-0030",
+    "timestamp": "2026-10-26T14:01:21.780Z",
+    "client_ip": "198.51.100.29",
+    "client_port": 40899,
+    "method": "GET",
+    "path": "/articles/example.html",
+    "request_target": "/articles/example.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "\"Chromium\";v=\"130\"",
+      "platform": "\"macOS\""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 390,
+    "bot_family": "unknown",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.225,
+    "bytes_sent": 1980
+  },
+  {
+    "event_id": "fake-0031",
+    "timestamp": "2026-10-26T14:00:21.000Z",
+    "client_ip": "198.51.100.30",
+    "client_port": 40930,
+    "method": "GET",
+    "path": "/sitemap.xml",
+    "request_target": "/sitemap.xml",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "https://search.example/?q=network+art",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 432,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.256,
+    "bytes_sent": 2620
+  },
+  {
+    "event_id": "fake-0032",
+    "timestamp": "2026-10-26T14:00:38.130Z",
+    "client_ip": "198.51.100.31",
+    "client_port": 40961,
+    "method": "GET",
+    "path": "/experiments/",
+    "request_target": "/experiments/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 474,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.287,
+    "bytes_sent": 3260
+  },
+  {
+    "event_id": "fake-0033",
+    "timestamp": "2026-10-26T14:00:56.320Z",
+    "client_ip": "198.51.100.32",
+    "client_port": 40992,
+    "method": "GET",
+    "path": "/robots.txt",
+    "request_target": "/robots.txt",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/2.0",
+    "status": 304,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 180,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.318,
+    "bytes_sent": 0
+  },
+  {
+    "event_id": "fake-0034",
+    "timestamp": "2026-10-26T14:01:15.570Z",
+    "client_ip": "198.51.100.33",
+    "client_port": 41023,
+    "method": "GET",
+    "path": "/about.html",
+    "request_target": "/about.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 404,
+    "user_agent": "GPTBot/1.2",
+    "referer": "",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 222,
+    "bot_family": "gptbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.008,
+    "bytes_sent": 4540
+  },
+  {
+    "event_id": "fake-0035",
+    "timestamp": "2026-10-26T14:01:35.880Z",
+    "client_ip": "198.51.100.34",
+    "client_port": 41054,
+    "method": "GET",
+    "path": "/assets/style.css",
+    "request_target": "/assets/style.css",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 429,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "\"Chromium\";v=\"130\"",
+      "platform": "\"macOS\""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 264,
+    "bot_family": "unknown",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.039,
+    "bytes_sent": 5180
+  },
+  {
+    "event_id": "fake-0036",
+    "timestamp": "2026-10-26T14:00:24.500Z",
+    "client_ip": "198.51.100.35",
+    "client_port": 41085,
+    "method": "GET",
+    "path": "/",
+    "request_target": "/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 306,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.07,
+    "bytes_sent": 5820
+  },
+  {
+    "event_id": "fake-0037",
+    "timestamp": "2026-10-26T14:00:44.280Z",
+    "client_ip": "198.51.100.36",
+    "client_port": 41116,
+    "method": "GET",
+    "path": "/articles/example.html",
+    "request_target": "/articles/example.html?topic=art&token=%5Bredacted%5D",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "https://search.example/?q=network+art",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 348,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.101,
+    "bytes_sent": 700
+  },
+  {
+    "event_id": "fake-0038",
+    "timestamp": "2026-10-26T14:01:05.120Z",
+    "client_ip": "198.51.100.37",
+    "client_port": 41147,
+    "method": "GET",
+    "path": "/sitemap.xml",
+    "request_target": "/sitemap.xml",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 390,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.132,
+    "bytes_sent": 1340
+  },
+  {
+    "event_id": "fake-0039",
+    "timestamp": "2026-10-26T14:01:27.020Z",
+    "client_ip": "198.51.100.38",
+    "client_port": 41178,
+    "method": "GET",
+    "path": "/experiments/",
+    "request_target": "/experiments/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "GPTBot/1.2",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 432,
+    "bot_family": "gptbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.163,
+    "bytes_sent": 1980
+  },
+  {
+    "event_id": "fake-0040",
+    "timestamp": "2026-10-26T14:01:49.980Z",
+    "client_ip": "198.51.100.39",
+    "client_port": 41209,
+    "method": "HEAD",
+    "path": "/robots.txt",
+    "request_target": "/robots.txt",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 304,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "referer": "",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "\"Chromium\";v=\"130\"",
+      "platform": "\"macOS\""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 474,
+    "bot_family": "unknown",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.194,
+    "bytes_sent": 0
+  },
+  {
+    "event_id": "fake-0041",
+    "timestamp": "2026-10-26T14:00:28.000Z",
+    "client_ip": "198.51.100.20",
+    "client_port": 41240,
+    "method": "GET",
+    "path": "/about.html",
+    "request_target": "/about.html",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/2.0",
+    "status": 404,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 180,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.225,
+    "bytes_sent": 3260
+  },
+  {
+    "event_id": "fake-0042",
+    "timestamp": "2026-10-26T14:00:50.430Z",
+    "client_ip": "198.51.100.21",
+    "client_port": 41271,
+    "method": "GET",
+    "path": "/assets/style.css",
+    "request_target": "/assets/style.css",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 429,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 222,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.256,
+    "bytes_sent": 3900
+  },
+  {
+    "event_id": "fake-0043",
+    "timestamp": "2026-10-26T14:01:13.920Z",
+    "client_ip": "198.51.100.22",
+    "client_port": 41302,
+    "method": "GET",
+    "path": "/",
+    "request_target": "/",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "https://search.example/?q=network+art",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 264,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.287,
+    "bytes_sent": 4540
+  },
+  {
+    "event_id": "fake-0044",
+    "timestamp": "2026-10-26T14:01:38.470Z",
+    "client_ip": "198.51.100.23",
+    "client_port": 41333,
+    "method": "GET",
+    "path": "/articles/example.html",
+    "request_target": "/articles/example.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "GPTBot/1.2",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 306,
+    "bot_family": "gptbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.318,
+    "bytes_sent": 5180
+  },
+  {
+    "event_id": "fake-0045",
+    "timestamp": "2026-10-26T14:02:04.080Z",
+    "client_ip": "198.51.100.24",
+    "client_port": 41364,
+    "method": "GET",
+    "path": "/sitemap.xml",
+    "request_target": "/sitemap.xml",
+    "host": "visit-observatory.test",
+    "scheme": "http",
+    "protocol": "HTTP/2.0",
+    "status": 200,
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "\"Chromium\";v=\"130\"",
+      "platform": "\"macOS\""
+    },
+    "tls": {
+      "protocol": "",
+      "cipher": ""
+    },
+    "request_length": 348,
+    "bot_family": "unknown",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.008,
+    "bytes_sent": 5820
+  },
+  {
+    "event_id": "fake-0046",
+    "timestamp": "2026-10-26T14:00:31.500Z",
+    "client_ip": "198.51.100.25",
+    "client_port": 41395,
+    "method": "GET",
+    "path": "/experiments/",
+    "request_target": "/experiments/?topic=art&token=%5Bredacted%5D",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "user_agent": "OAI-SearchBot/1.0",
+    "referer": "",
+    "accept_language": "zh-TW,zh;q=0.9",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 390,
+    "bot_family": "oai-searchbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.039,
+    "bytes_sent": 700
+  },
+  {
+    "event_id": "fake-0047",
+    "timestamp": "2026-10-26T14:00:56.580Z",
+    "client_ip": "198.51.100.26",
+    "client_port": 41426,
+    "method": "GET",
+    "path": "/robots.txt",
+    "request_target": "/robots.txt",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 304,
+    "user_agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 432,
+    "bot_family": "googlebot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.07,
+    "bytes_sent": 0
+  },
+  {
+    "event_id": "fake-0048",
+    "timestamp": "2026-10-26T14:01:22.720Z",
+    "client_ip": "198.51.100.27",
+    "client_port": 41457,
+    "method": "GET",
+    "path": "/about.html",
+    "request_target": "/about.html",
+    "host": "visit-observatory.test",
+    "scheme": "https",
+    "protocol": "HTTP/2.0",
+    "status": 404,
+    "user_agent": "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+    "referer": "",
+    "accept_language": "en-US,en;q=0.8",
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "client_hints": {
+      "ua": "",
+      "platform": ""
+    },
+    "tls": {
+      "protocol": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384"
+    },
+    "request_length": 474,
+    "bot_family": "bingbot",
+    "verification_status": "unverified",
+    "request_time_seconds": 0.101,
+    "bytes_sent": 1980
+  }
+]

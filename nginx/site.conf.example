@@ -1,0 +1,42 @@
+# Put the log_format block inside nginx.conf's http {} context, not inside this server block.
+log_format access_json escape=json
+  '{'
+    '"time":"$time_iso8601",'
+    '"client_ip":"$remote_addr",'
+    '"client_port":"$remote_port",'
+    '"method":"$request_method",'
+    '"uri":"$uri",'
+    '"request_uri":"$request_uri",'
+    '"host":"$host",'
+    '"scheme":"$scheme",'
+    '"protocol":"$server_protocol",'
+    '"status":$status,'
+    '"user_agent":"$http_user_agent",'
+    '"referer":"$http_referer",'
+    '"accept_language":"$http_accept_language",'
+    '"accept":"$http_accept",'
+    '"sec_ch_ua":"$http_sec_ch_ua",'
+    '"sec_ch_ua_platform":"$http_sec_ch_ua_platform",'
+    '"ssl_protocol":"$ssl_protocol",'
+    '"ssl_cipher":"$ssl_cipher",'
+    '"request_length":$request_length,'
+    '"request_time":$request_time,'
+    '"bytes_sent":$body_bytes_sent,'
+    '"request_id":"$request_id"'
+  '}';
+
+# Change the root and log path for the target host. The log directory must be outside root.
+server {
+    listen 80;
+    server_name your-production-domain.tld;
+    root /srv/visit-observatory/public;
+    index index.html;
+
+    access_log /var/log/visit-observatory/access.jsonl access_json;
+
+    location / { try_files $uri $uri/ =404; }
+}
+
+# Before enabling: nginx -t
+# This deliberately excludes Cookie, Authorization, and request bodies. Do not add them.
+# Configure logrotate to rotate /var/log/visit-observatory/access.jsonl and signal Nginx to reopen logs.

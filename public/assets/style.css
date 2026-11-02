@@ -1,0 +1,153 @@
+body {
+  background: #000;
+  color: #61cf5a;
+  color-scheme: dark;
+  font-family: "superscore-vf", sans-serif;
+}
+
+h1 {
+  color: #61cf5a;
+  font-family: "superscore-vf", sans-serif;
+  font-weight: 700;
+}
+
+h2 {
+  color: #63ad58;
+}
+
+h3 {
+  color: #50864c;
+}
+
+p,
+footer {
+  color: #63ad58;
+}
+
+a {
+  color: #61cf5a;
+}
+
+a:visited {
+  color: #50864c;
+}
+
+a:hover {
+  color: #63ad58;
+}
+
+a:focus-visible {
+  outline: 2px solid #61cf5a;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: #61cf5a;
+  color: #000;
+}
+
+code {
+  color: #3e6a3d;
+}
+
+main,
+.site-header,
+footer {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.site-header,
+footer {
+  padding-block: 1.25rem;
+}
+
+.article-pagination {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.site-header nav,
+.article-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.prose,
+.article-page {
+  max-width: 48rem;
+}
+
+.article-page article > header {
+  margin-block: 2.5rem 1.5rem;
+}
+
+.standfirst {
+  font-size: 1.25rem;
+}
+
+.article-date {
+  font-size: 0.95rem;
+}
+
+.article-pagination {
+  border-block: 1px solid #3e6a3d;
+  margin-top: 1rem;
+  padding-block: 0.75rem;
+}
+
+.article-figure {
+  margin: 2rem 0;
+}
+
+.article-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #3e6a3d;
+}
+
+figcaption {
+  margin-top: 0.65rem;
+  color: #63ad58;
+}
+
+.article-list {
+  padding-left: 1.25rem;
+}
+
+.article-list li + li {
+  margin-top: 1.5rem;
+}
+
+
+.flux-title {
+  color: #61cf5a;
+  text-shadow: 2px 2px 0 #3b4b33;
+  font-family: "superscore-vf", sans-serif;
+  font-size: clamp(2rem, 7vw, 6rem);
+  font-weight: 700;
+
+  font-variation-settings:
+    "wght" 700,
+    "FLUX" 0;
+
+  animation: flux-motion 1s ease-in-out infinite alternate;
+}
+
+@keyframes flux-motion {
+  from {
+    font-variation-settings:
+      "wght" 700,
+      "FLUX" 0;
+  }
+
+  to {
+    font-variation-settings:
+      "wght" 700,
+      "FLUX" 100;
+  }
+}

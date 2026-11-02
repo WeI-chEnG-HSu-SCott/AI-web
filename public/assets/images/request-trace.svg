@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">A web request becomes an Insectary event</title>
+  <desc id="desc">A green line diagram on black showing a crawler sending a request to an Insectary recorder and the recorder producing a visible event trace.</desc>
+  <rect width="1200" height="520" fill="#000"/>
+  <g fill="none" stroke="#61cf5a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M235 260H435"/><path d="M765 260H965"/><path d="M405 240l30 20-30 20"/><path d="M935 240l30 20-30 20"/>
+    <circle cx="165" cy="260" r="85"/><path d="M115 235c35-58 100-58 100 0M115 285c35 58 100 58 100 0M165 175v170M80 260h170"/>
+    <rect x="435" y="155" width="330" height="210" rx="18"/><path d="M490 215h220M490 260h150M490 305h190"/>
+    <path d="M1000 180v160M1035 210v100M1070 155v210M1105 235v60"/>
+  </g>
+  <g fill="#61cf5a" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="165" y="405" font-size="30">automated visitor</text><text x="335" y="230" font-size="24">HTTP request</text>
+    <text x="600" y="415" font-size="30">Insectary recorder</text><text x="865" y="230" font-size="24">limited event</text><text x="1055" y="405" font-size="30">visible trace</text>
+  </g>
+</svg>
