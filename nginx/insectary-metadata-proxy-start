@@ -3,4 +3,7 @@ set -eu
 
 COOKIE_HMAC_KEY="$(cat /etc/nginx/insectary-cookie-hmac.key)"
 export COOKIE_HMAC_KEY
-exec runuser -u www-data -- env COOKIE_HMAC_KEY="$COOKIE_HMAC_KEY" /usr/bin/node /usr/local/lib/insectary/metadata-proxy.js
+export METADATA_PROXY_PORT=18080
+# FlyOS restricts the www-data system account from opening listening sockets.
+# The loopback-only proxy therefore runs as the dedicated device user.
+exec runuser -u flyos -- env COOKIE_HMAC_KEY="$COOKIE_HMAC_KEY" METADATA_PROXY_PORT="$METADATA_PROXY_PORT" /usr/bin/node /usr/local/lib/insectary/metadata-proxy.js

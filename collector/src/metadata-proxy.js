@@ -3,7 +3,7 @@ import http from 'node:http';
 
 const config = {
   host: process.env.METADATA_PROXY_HOST || '127.0.0.1',
-  port: Number(process.env.METADATA_PROXY_PORT || 8080),
+  port: Number(process.env.METADATA_PROXY_PORT || 18080),
   originHost: process.env.NGINX_ORIGIN_HOST || '127.0.0.1',
   originPort: Number(process.env.NGINX_ORIGIN_PORT || 8081),
   hmacKey: process.env.COOKIE_HMAC_KEY || ''

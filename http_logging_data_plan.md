@@ -513,10 +513,12 @@ FlyOS 使用 Ubuntu Jammy ARM64 的 ports repository。實測該 repository 即�
 改用現有 Node 24 建立 loopback-only metadata proxy：
 
 ```text
-Cloudflare Tunnel → Node metadata proxy :8080 → Nginx :8081
+Cloudflare Tunnel → Node metadata proxy :18080 → Nginx :8081
 ```
 
 proxy 在記憶體中讀取 Cookie／Authorization，計算 metadata 與 HMAC，移除 `Cookie`、`Authorization`、`Proxy-Authorization` 及任何訪客偽造的 `X-Insectary-*` header，再把純 metadata header 轉給 Nginx。原始 Cookie 不會寫入 Nginx log、Node console、SSE 或回應。
+
+FlyOS 對 `www-data` 系統帳號限制 socket binding，因此 metadata proxy 以 `flyos` 帳號執行；它仍只監聽 `127.0.0.1`，外部網路無法直接連入。
 
 ### 11.3 建立並保管 HMAC key
 
@@ -538,7 +540,7 @@ sudo install -o root -g root -m 0700 ~/AI-web/nginx/insectary-metadata-proxy-sta
 
 ### 11.4 Node metadata proxy 程式
 
-專案的 `collector/src/metadata-proxy.js` 是此 proxy。它必須在 `cloudflared` 前面監聽原本的 `127.0.0.1:8080`，Nginx 則改為只監聽 `127.0.0.1:8081`。安裝腳本前，將程式放到可由低權限程序讀取的位置：
+專案的 `collector/src/metadata-proxy.js` 是此 proxy。它在 `127.0.0.1:18080` 監聽，Nginx 則只監聽 `127.0.0.1:8081`。Cloudflare Tunnel 的 Published application service 必須改為 `http://127.0.0.1:18080`；不要將該 port 額外公開。安裝腳本前，將程式放到可由低權限程序讀取的位置：
 
 ```bash
 sudo install -d -o root -g root -m 0755 /usr/local/lib/insectary
@@ -565,7 +567,7 @@ sudo install -o root -g root -m 0644 ~/AI-web/nginx/flyos-insectary-site.conf /e
 FlyOS 的實際路徑為：
 
 ```text
-visitor → Cloudflare edge → cloudflared → Node :8080 → Nginx :8081
+visitor → Cloudflare edge → cloudflared → Node :18080 → Nginx :8081
 ```
 
 因此 server block 必須同時有：
@@ -609,5 +611,5 @@ access_log /var/log/insectary/access.jsonl insectary_json;
    - `proxy_peer_ip` 為 `127.0.0.1`。
    - `ip_resolution` 是 `trusted_cloudflare_tunnel_header`。
    - 若瀏覽器帶 Cookie，`has_cookie` 為 `1`，metadata 欄位有數值／fingerprint，且 log 中找不到 Cookie 值。
-8. 用 `curl -I http://127.0.0.1:8080/` 測試本機 request 時，預期 `client_ip` 是 `127.0.0.1`、`ip_resolution` 是 `direct_or_header_absent`，這是正常的對照結果。
+8. 用 `curl -I http://127.0.0.1:18080/` 測試本機 request 時，預期 `client_ip` 是 `127.0.0.1`、`ip_resolution` 是 `direct_or_header_absent`，這是正常的對照結果。
 9. 檢查 SSE viewer；它只應顯示真實 client IP 和 IP resolution，不應展示 Cookie metadata 或 fingerprint。
