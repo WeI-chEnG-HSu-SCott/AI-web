@@ -1,12 +1,31 @@
-# Put the log_format block inside nginx.conf's http {} context, not inside this server block.
-log_format access_json escape=json
+# Place this block in Nginx's http {} context, not a server {} block.
+map $http_cookie $has_cookie { "" 0; default 1; }
+map $http_authorization $has_authorization { "" 0; default 1; }
+map $http_cf_connecting_ip $ip_resolution {
+    ""      "direct_or_header_absent";
+    default "trusted_cloudflare_tunnel_header";
+}
+
+js_import /etc/nginx/njs/insectary_cookie_meta.js;
+js_set $cookie_header_bytes insectary_cookie_meta.cookieHeaderBytes;
+js_set $cookie_count insectary_cookie_meta.cookieCount;
+js_set $cookie_names insectary_cookie_meta.cookieNames;
+js_set $cookie_fingerprint insectary_cookie_meta.cookieFingerprint;
+
+log_format insectary_json escape=json
   '{'
     '"time":"$time_iso8601",'
     '"client_ip":"$remote_addr",'
     '"client_port":"$remote_port",'
+    '"proxy_peer_ip":"$realip_remote_addr",'
+    '"proxy_peer_port":"$realip_remote_port",'
+    '"ip_resolution":"$ip_resolution",'
+    '"cf_connecting_ip_header":"$http_cf_connecting_ip",'
+    '"x_forwarded_for_header":"$http_x_forwarded_for",'
+    '"cf_ray":"$http_cf_ray",'
     '"method":"$request_method",'
+    '"request":"$request",'
     '"uri":"$uri",'
-    '"request_uri":"$request_uri",'
     '"host":"$host",'
     '"scheme":"$scheme",'
     '"protocol":"$server_protocol",'
@@ -15,28 +34,46 @@ log_format access_json escape=json
     '"referer":"$http_referer",'
     '"accept_language":"$http_accept_language",'
     '"accept":"$http_accept",'
+    '"accept_encoding":"$http_accept_encoding",'
+    '"content_type":"$http_content_type",'
+    '"content_length":"$http_content_length",'
+    '"origin":"$http_origin",'
     '"sec_ch_ua":"$http_sec_ch_ua",'
     '"sec_ch_ua_platform":"$http_sec_ch_ua_platform",'
+    '"sec_ch_ua_mobile":"$http_sec_ch_ua_mobile",'
+    '"sec_fetch_site":"$http_sec_fetch_site",'
+    '"sec_fetch_mode":"$http_sec_fetch_mode",'
+    '"sec_fetch_dest":"$http_sec_fetch_dest",'
+    '"has_cookie":$has_cookie,'
+    '"cookie_header_bytes":$cookie_header_bytes,'
+    '"cookie_count":$cookie_count,'
+    '"cookie_names":"$cookie_names",'
+    '"cookie_fingerprint":"$cookie_fingerprint",'
+    '"has_authorization":$has_authorization,'
     '"ssl_protocol":"$ssl_protocol",'
     '"ssl_cipher":"$ssl_cipher",'
     '"request_length":$request_length,'
     '"request_time":$request_time,'
-    '"bytes_sent":$body_bytes_sent,'
+    '"bytes_sent":$bytes_sent,'
+    '"body_bytes_sent":$body_bytes_sent,'
     '"request_id":"$request_id"'
   '}';
 
-# Change the root and log path for the target host. The log directory must be outside root.
+# This server must listen only on loopback when cloudflared runs on the same host.
 server {
-    listen 80;
-    server_name your-production-domain.tld;
+    listen 127.0.0.1:8080;
+    server_name _;
     root /srv/visit-observatory/public;
     index index.html;
 
-    access_log /var/log/visit-observatory/access.jsonl access_json;
+    set_real_ip_from 127.0.0.1;
+    real_ip_header CF-Connecting-IP;
+    real_ip_recursive on;
 
+    access_log /var/log/visit-observatory/access.jsonl insectary_json;
     location / { try_files $uri $uri/ =404; }
+    location ~ /\. { deny all; }
 }
 
-# Before enabling: nginx -t
-# This deliberately excludes Cookie, Authorization, and request bodies. Do not add them.
-# Configure logrotate to rotate /var/log/visit-observatory/access.jsonl and signal Nginx to reopen logs.
+# Do not log raw Cookie, Authorization, Proxy-Authorization, request body,
+# $args, or $request_uri. This static deployment only records has_cookie.

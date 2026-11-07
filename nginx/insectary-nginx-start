@@ -1,0 +1,5 @@
+#!/bin/sh
+set -eu
+
+export COOKIE_HMAC_KEY="$(cat /etc/nginx/insectary-cookie-hmac.key)"
+exec /usr/sbin/nginx "$@"
