@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const config = {
   logPath: path.resolve(process.env.ACCESS_LOG_PATH || path.join(here, '..', 'data', 'access.jsonl')),
-  host: process.env.SSE_HOST || '127.0.0.1',
+  host: process.env.SSE_HOST || '0.0.0.0',
   port: Number(process.env.SSE_PORT || 8787),
   bufferSize: Math.max(1, Number(process.env.EVENT_BUFFER_SIZE || 50)),
   maxEventsPerSecond: Math.max(1, Number(process.env.MAX_EVENTS_PER_SECOND || 120))

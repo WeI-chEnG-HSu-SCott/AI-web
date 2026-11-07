@@ -1,1 +1,70 @@
-<!doctype html><meta charset="utf-8"><title>Local event viewer</title><style>body{font:16px system-ui;margin:2rem;background:#101614;color:#e9f2ed}li{padding:.5rem;border-bottom:1px solid #354}.ok{color:#7ee2a8}.bad{color:#ff9b8e}</style><h1>Local SSE event viewer</h1><p id="state">Connecting…</p><ol id="events"></ol><script>const state=document.querySelector('#state'),list=document.querySelector('#events');const es=new EventSource('/events');es.onopen=()=>{state.textContent='Connected to local collector';state.className='ok'};es.onerror=()=>{state.textContent='Disconnected; EventSource will retry';state.className='bad'};es.addEventListener('visit',e=>{const item=document.createElement('li');try{const x=JSON.parse(e.data),ip=x.client_ip||'unavailable';item.textContent=`${x.timestamp} · ${x.method} ${x.path} · ${x.status} · ${x.bot_family} · client IP: ${ip} (${x.ip_resolution||'unverified'})`;}catch{item.textContent='Malformed event ignored';}list.prepend(item);while(list.children.length>50)list.lastElementChild.remove();});</script>
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Local event viewer</title>
+  <style>
+    body { font: 14px system-ui; margin: 2rem; background: #101614; color: #e9f2ed; line-height: 1.5; }
+    h1 { font-size: 1.5rem; color: #7ee2a8; }
+    #state { margin-bottom: 1rem; padding: 0.5rem; border-radius: 4px; }
+    .ok { background: #1a2e25; color: #7ee2a8; border: 1px solid #2a4e3d; }
+    .bad { background: #2e1a1a; color: #ff9b8e; border: 1px solid #4e2a2a; }
+    ol { list-style: none; padding: 0; }
+    li { padding: 0.75rem; border-bottom: 1px solid #354; display: flex; flex-direction: column; gap: 0.25rem; }
+    .meta { font-size: 0.85rem; color: #8a9e95; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .ip { color: #7ee2a8; font-weight: bold; }
+    .cookie { color: #f0c674; }
+    .path { color: #81a2be; font-weight: bold; }
+    .status { padding: 2px 6px; border-radius: 3px; font-weight: bold; font-size: 0.75rem; }
+    .status-200 { background: #2a4e3d; color: #7ee2a8; }
+    .status-404 { background: #4e2a2a; color: #ff9b8e; }
+    .bot { color: #b294bb; }
+  </style>
+</head>
+<body>
+  <h1>Local SSE Event Viewer</h1>
+  <div id="state">Connecting...</div>
+  <ol id="events"></ol>
+
+  <script>
+    const state = document.querySelector('#state');
+    const list = document.querySelector('#events');
+    const es = new EventSource('/events');
+
+    es.onopen = () => {
+      state.textContent = 'Connected to local collector';
+      state.className = 'ok';
+    };
+
+    es.onerror = () => {
+      state.textContent = 'Disconnected; EventSource will retry';
+      state.className = 'bad';
+    };
+
+    es.addEventListener('visit', e => {
+      const item = document.createElement('li');
+      try {
+        const x = JSON.parse(e.data);
+        const ip = x.client_ip || 'unavailable';
+        const statusClass = x.status === 200 ? 'status-200' : (x.status >= 400 ? 'status-404' : '');
+        
+        const cookieInfo = x.cookie_metadata.has_cookie 
+          ? '🍪 <span class="cookie">' + x.cookie_metadata.count + ' cookies (' + x.cookie_metadata.names + ')</span>' 
+          : '🍪 <span class="cookie">No cookies</span>';
+
+        item.innerHTML = '<div><span class="status ' + statusClass + '">' + x.status + '</span> <span class="path">' + x.method + ' ' + x.path + '</span></div>' +
+          '<div class="meta">' +
+            '<span>' + x.timestamp + '</span> | ' +
+            '<span class="bot">' + x.bot_family + '</span> | ' +
+            '<span class="ip">IP: ' + ip + '</span> (' + (x.ip_resolution || 'unverified') + ')' +
+          '</div>' +
+          '<div class="meta">' + cookieInfo + '</div>';
+      } catch (err) {
+        item.textContent = 'Malformed event ignored: ' + err.message;
+      }
+      list.prepend(item);
+      while (list.children.length > 50) list.lastElementChild.remove();
+    });
+  </script>
+</body>
+</html>

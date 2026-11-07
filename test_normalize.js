@@ -1,0 +1,1 @@
+﻿import { normalize } from './collector/src/server.js'; const record = {time:'2026-11-07T10:00:00Z',client_ip:'1.2.3.4',method:'GET',uri:'/test',status:200,user_agent:'Mozilla/5.0',has_cookie:1,cookie_count:2,cookie_names:'a,b',cookie_fingerprint:'abc'}; console.log(JSON.stringify(normalize(record), null, 2));
