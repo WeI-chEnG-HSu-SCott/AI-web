@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+
+COOKIE_HMAC_KEY="$(cat /etc/nginx/insectary-cookie-hmac.key)"
+export COOKIE_HMAC_KEY
+exec runuser -u www-data -- env COOKIE_HMAC_KEY="$COOKIE_HMAC_KEY" /usr/bin/node /usr/local/lib/insectary/metadata-proxy.js

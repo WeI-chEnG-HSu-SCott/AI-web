@@ -506,17 +506,17 @@ access_log /var/log/nginx/research-access.json research_json;
 
 同一完整 Cookie header 在 key 不變時會得到同一 fingerprint；header 任何值、順序或名稱改變時 fingerprint 會改變。fingerprint 仍是可關聯識別符，應視為個人資料，不應公開展示。
 
-### 11.2 一次性安裝 njs
+### 11.2 FlyOS Jammy ARM64：使用 Node metadata proxy
 
-FlyOS／Ubuntu 的 Nginx 需要 `libnginx-mod-http-js` 才能在 Nginx 內計算精確 bytes、名稱、數量與 HMAC。安裝後確認動態 module 已載入：
+FlyOS 使用 Ubuntu Jammy ARM64 的 ports repository。實測該 repository 即使啟用 Universe，仍不提供與其 Nginx 1.18 ABI 相容的 `libnginx-mod-http-js`／`njs` 套件。因此本部署**不混裝**其他 Ubuntu 版本或官方 Nginx 的 dynamic module。
 
-```bash
-sudo apt update
-sudo apt install -y libnginx-mod-http-js
-nginx -T 2>&1 | grep -E 'ngx_http_js_module|js_import'
+改用現有 Node 24 建立 loopback-only metadata proxy：
+
+```text
+Cloudflare Tunnel → Node metadata proxy :8080 → Nginx :8081
 ```
 
-若最後一行沒有輸出 `load_module ... ngx_http_js_module.so`，確認 `/etc/nginx/modules-enabled/` 內有 njs module 的設定檔，並在 Nginx 主設定的最上方（`events {}` 前）加入正確的 `load_module` 指令後再測試。不要在 `http {}` 區塊內使用 `load_module`。
+proxy 在記憶體中讀取 Cookie／Authorization，計算 metadata 與 HMAC，移除 `Cookie`、`Authorization`、`Proxy-Authorization` 及任何訪客偽造的 `X-Insectary-*` header，再把純 metadata header 轉給 Nginx。原始 Cookie 不會寫入 Nginx log、Node console、SSE 或回應。
 
 ### 11.3 建立並保管 HMAC key
 
@@ -530,39 +530,20 @@ sudo chmod 600 /etc/nginx/insectary-cookie-hmac.key
 
 Key 不可貼入聊天、Git、Nginx JSONL 或 SSE。遺失 key 不會洩漏 Cookie，但之後產生的 fingerprint 將無法與舊資料比對。更換 key 則會讓同一 Cookie 得到新的 fingerprint。
 
-為使 njs 可以取得 key，在 `/etc/nginx/nginx.conf` 的**主層級**加入（在 `events {}` 前，不能放在 `http {}` 裡）：
-
-```nginx
-env COOKIE_HMAC_KEY;
-```
-
-將專案內 `nginx/insectary-nginx-start` 安裝成 root-only 啟動 wrapper：
+將專案內 `nginx/insectary-metadata-proxy-start` 安裝成 root-only metadata proxy 啟動 wrapper：
 
 ```bash
-sudo install -o root -g root -m 0700 ~/AI-web/nginx/insectary-nginx-start /usr/local/sbin/insectary-nginx-start
-sudo chown root:root /usr/local/sbin/insectary-nginx-start
-sudo chmod 700 /usr/local/sbin/insectary-nginx-start
+sudo install -o root -g root -m 0700 ~/AI-web/nginx/insectary-metadata-proxy-start /usr/local/sbin/insectary-metadata-proxy-start
 ```
 
-FlyOS 沒有 systemd，完整停止後必須以此 wrapper 啟動 Nginx：
+### 11.4 Node metadata proxy 程式
+
+專案的 `collector/src/metadata-proxy.js` 是此 proxy。它必須在 `cloudflared` 前面監聽原本的 `127.0.0.1:8080`，Nginx 則改為只監聽 `127.0.0.1:8081`。安裝腳本前，將程式放到可由低權限程序讀取的位置：
 
 ```bash
-sudo nginx -s quit
-sudo /usr/local/sbin/insectary-nginx-start
+sudo install -d -o root -g root -m 0755 /usr/local/lib/insectary
+sudo install -o root -g root -m 0644 ~/AI-web/collector/src/metadata-proxy.js /usr/local/lib/insectary/metadata-proxy.js
 ```
-
-一般設定重載可繼續用 `sudo nginx -s reload`；Nginx master process 會保留 key 的環境變數。
-
-### 11.4 njs cookie metadata 程式
-
-將專案內 `nginx/insectary_cookie_meta.js` 複製到 FlyOS：
-
-```bash
-sudo install -d -o root -g root -m 0755 /etc/nginx/njs
-sudo install -o root -g root -m 0644 ~/AI-web/nginx/insectary_cookie_meta.js /etc/nginx/njs/insectary_cookie_meta.js
-```
-
-此程式只接觸 Cookie header 以產生 metadata 與 HMAC；它不會將原始 header 寫到 access log、error log 或 SSE。
 
 ### 11.5 Nginx log format
 
@@ -577,30 +558,20 @@ sudo install -o root -g root -m 0644 ~/AI-web/nginx/flyos-insectary-log-format.c
 sudo install -o root -g root -m 0644 ~/AI-web/nginx/flyos-insectary-site.conf /etc/nginx/sites-available/insectary
 ```
 
-必要的 Cookie 欄位為：
-
-```nginx
-js_import /etc/nginx/njs/insectary_cookie_meta.js;
-js_set $cookie_header_bytes insectary_cookie_meta.cookieHeaderBytes;
-js_set $cookie_count insectary_cookie_meta.cookieCount;
-js_set $cookie_names insectary_cookie_meta.cookieNames;
-js_set $cookie_fingerprint insectary_cookie_meta.cookieFingerprint;
-```
-
-`insectary_json` log format 必須引用這四個變數，並保留 `has_cookie`。嚴禁加入 `$http_cookie`、`$http_authorization`、`$http_proxy_authorization`、`$request_body`、`$args` 或 `$request_uri`。
+`insectary_json` log format 從 Node 加入的 `X-Insectary-*` metadata header 取值。嚴禁加入 `$http_cookie`、`$http_authorization`、`$http_proxy_authorization`、`$request_body`、`$args` 或 `$request_uri`。
 
 ### 11.6 真實訪客 IP：Cloudflare Tunnel 專用信任模型
 
 FlyOS 的實際路徑為：
 
 ```text
-visitor → Cloudflare edge → cloudflared → 127.0.0.1:8080 Nginx
+visitor → Cloudflare edge → cloudflared → Node :8080 → Nginx :8081
 ```
 
 因此 server block 必須同時有：
 
 ```nginx
-listen 127.0.0.1:8080;
+listen 127.0.0.1:8081;
 set_real_ip_from 127.0.0.1;
 real_ip_header CF-Connecting-IP;
 real_ip_recursive on;
@@ -612,32 +583,31 @@ access_log /var/log/insectary/access.jsonl insectary_json;
 ### 11.7 驗證順序
 
 1. 備份現有 Nginx 設定。
-2. 安裝 njs、建立 key、加入 `env COOKIE_HMAC_KEY;`、建立 wrapper。
-3. 同步 njs script 和更新後的 log format。
-4. 執行：
+2. 建立 key、同步 Node metadata proxy 和更新後的 log format。
+3. 執行：
 
    ```bash
    sudo nginx -t
    ```
 
-5. 若成功，完全重啟 Nginx（第一次必須讓 master 繼承 key）：
+4. 若成功，重啟 Nginx（它會改為監聽 8081）：
 
    ```bash
    sudo nginx -s quit
-   sudo /usr/local/sbin/insectary-nginx-start
+   sudo nginx
    ```
 
-6. 同步更新後的 `collector/src/server.js` 和 `collector/src/viewer.html` 到 `~/AI-web/collector/src/`，並重啟 tmux 內的 collector。
-7. 開啟 log：
+5. 啟動 metadata proxy，再同步更新後的 `collector/src/server.js` 和 `collector/src/viewer.html` 到 `~/AI-web/collector/src/`，並重啟 tmux 內的 collector。
+6. 開啟 log：
 
    ```bash
    sudo tail -f /var/log/insectary/access.jsonl
    ```
 
-8. 用自己的手機行動網路訪問 `https://come-is.site`。驗證：
+7. 用自己的手機行動網路訪問 `https://come-is.site`。驗證：
    - `client_ip` 和 `cf_connecting_ip_header` 相同，且不是 `127.0.0.1`。
    - `proxy_peer_ip` 為 `127.0.0.1`。
    - `ip_resolution` 是 `trusted_cloudflare_tunnel_header`。
    - 若瀏覽器帶 Cookie，`has_cookie` 為 `1`，metadata 欄位有數值／fingerprint，且 log 中找不到 Cookie 值。
-9. 用 `curl -I http://127.0.0.1:8080/` 測試本機 request 時，預期 `client_ip` 是 `127.0.0.1`、`ip_resolution` 是 `direct_or_header_absent`，這是正常的對照結果。
-10. 檢查 SSE viewer；它只應顯示真實 client IP 和 IP resolution，不應展示 Cookie metadata 或 fingerprint。
+8. 用 `curl -I http://127.0.0.1:8080/` 測試本機 request 時，預期 `client_ip` 是 `127.0.0.1`、`ip_resolution` 是 `direct_or_header_absent`，這是正常的對照結果。
+9. 檢查 SSE viewer；它只應顯示真實 client IP 和 IP resolution，不應展示 Cookie metadata 或 fingerprint。

@@ -4,5 +4,5 @@
   "version": "0.1.0",
   "type": "module",
   "engines": { "node": ">=20" },
-  "scripts": { "start": "node src/server.js", "test": "node --test test/*.test.mjs", "test:e2e": "node ../scripts/e2e-test.mjs" }
+  "scripts": { "start": "node src/server.js", "start:metadata-proxy": "node src/metadata-proxy.js", "test": "node --test test/*.test.mjs", "test:e2e": "node ../scripts/e2e-test.mjs" }
 }
