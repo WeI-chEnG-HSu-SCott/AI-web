@@ -11,7 +11,7 @@ node scripts/local-static-server.mjs
 node collector/src/server.js
 ```
 
-網站為 `http://127.0.0.1:8080`；本機事件檢視器為 `http://127.0.0.1:8787/viewer`。開發時 collector 讀取 `collector/data/access.jsonl`。Nginx 上線時，使用 `ACCESS_LOG_PATH` 指向 Nginx 的 JSONL log，例如：
+網站為 `http://127.0.0.1:8080`；本機事件檢視器為 `http://127.0.0.1:8790/viewer`。開發時 collector 讀取 `collector/data/access.jsonl`。Nginx 上線時，使用 `ACCESS_LOG_PATH` 指向 Nginx 的 JSONL log，例如：
 
 ```powershell
 $env:ACCESS_LOG_PATH = 'C:\logs\visit-observatory\access.jsonl'
@@ -73,7 +73,7 @@ node scripts/generate-public-metadata.mjs
 
 1. 在 Cloudflare Dashboard 的 **Networking → Tunnels** 建立 tunnel，依 Windows/Linux 主機安裝指示執行 `cloudflared`。
 2. 新增 Published application：hostname 選你的公開網域，Service URL 指向 `http://localhost:80`（Nginx）。
-3. **不要**建立任何指向 port 8787（collector）的公開 route。
+3. **不要**建立任何指向 port 8790（collector）的公開 route。
 4. 從另一個網路以 `curl -I` 檢查首頁、robots、sitemap、文章皆為 200，並檢查 canonical 與 TLS。
 5. 在 Google Search Console 與 Bing Webmaster Tools 驗證 `come-is.site`，提交 `https://come-is.site/sitemap.xml`；這些行為不保證收錄或 AI 引用。
 

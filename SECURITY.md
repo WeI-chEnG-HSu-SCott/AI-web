@@ -3,7 +3,7 @@
 ## Public surface
 
 - Nginx serves only `public/` static files.
-- The collector listens on `127.0.0.1:8787` by default. Its only endpoints are `/health`, `/events`, and local `/viewer`; do not expose its port through a tunnel or reverse proxy.
+- The collector listens on `0.0.0.0:8790` by default. Its only endpoints are `/health`, `/events`, and local `/viewer`; do not expose its port through a tunnel or reverse proxy.
 
 ## Event data
 
