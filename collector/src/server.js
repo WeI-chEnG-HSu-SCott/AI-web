@@ -38,7 +38,7 @@ export function fetchGeoIP(ip = "") {
   }
   if (geoCache.has(cleanIp)) return Promise.resolve(geoCache.get(cleanIp));
   return new Promise((resolve) => {
-    const req = https.get("https://ipapi.co/" + cleanIp + "/json/", {
+    const req = https.get("https://ipwho.is/" + cleanIp, {
       headers: { "User-Agent": "Mozilla/5.0 (compatible; FlyOS-Collector/1.0)" },
       timeout: 3000
     }, (res) => {
@@ -48,11 +48,11 @@ export function fetchGeoIP(ip = "") {
         try {
           if (res.statusCode === 200) {
             const data = JSON.parse(body);
-            if (!data.error) {
+            if (data && data.success) {
               const city = typeof data.city === "string" ? data.city : "";
               const region = typeof data.region === "string" ? data.region : "";
-              const country = typeof (data.country_name || data.country) === "string" ? (data.country_name || data.country) : "";
-              const org = typeof (data.org || data.asn) === "string" ? (data.org || data.asn) : "";
+              const country = typeof data.country === "string" ? data.country : "";
+              const org = typeof data.connection?.org === "string" ? data.connection.org : "";
               const locParts = [city, country].filter(Boolean);
               const location = locParts.length > 0 ? locParts.join(", ") : "Unknown";
               const result = { city, region, country_name: country, org, location };
@@ -60,14 +60,26 @@ export function fetchGeoIP(ip = "") {
               return resolve(result);
             }
           }
-        } catch {}
+        } catch (e) {
+          console.error("GeoIP parse error:", e.message);
+        }
         const fallback = { city: "", region: "", country_name: "", org: "", location: "Unknown" };
         geoCache.set(cleanIp, fallback);
         resolve(fallback);
       });
     });
-    req.on("error", () => { const fb = { city: "", region: "", country_name: "", org: "", location: "Unknown" }; geoCache.set(cleanIp, fb); resolve(fb); });
-    req.on("timeout", () => { req.destroy(); const fb = { city: "", region: "", country_name: "", org: "", location: "Unknown" }; geoCache.set(cleanIp, fb); resolve(fb); });
+    req.on("error", (err) => { 
+      console.error("GeoIP request error:", err.message);
+      const fb = { city: "", region: "", country_name: "", org: "", location: "Unknown" }; 
+      geoCache.set(cleanIp, fb); 
+      resolve(fb); 
+    });
+    req.on("timeout", () => { 
+      req.destroy(); 
+      const fb = { city: "", region: "", country_name: "", org: "", location: "Unknown" }; 
+      geoCache.set(cleanIp, fb); 
+      resolve(fb); 
+    });
   });
 }
 
