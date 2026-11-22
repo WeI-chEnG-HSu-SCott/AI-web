@@ -1,0 +1,24 @@
+﻿[Unit]
+Description=Insectary crawler SSE servo actuator
+After=network-online.target insectary-collector.service
+Wants=network-online.target
+Requires=insectary-collector.service
+
+[Service]
+Type=simple
+User=pi
+SupplementaryGroups=gpio
+WorkingDirectory=/home/pi/project/AI-web/raspberrypi/servo-sse
+Environment=SSE_URL=http://127.0.0.1:8790/events
+Environment=SERVO1_GPIO=18
+Environment=SERVO2_GPIO=19
+Environment=REST_ANGLE=0
+Environment=TRIGGER_ANGLE=1
+Environment=HOLD_SECONDS=0.4
+Environment=TRIGGERED_BOTS=oai-searchbot,gptbot,googlebot,bingbot
+ExecStart=/usr/bin/python3 /home/pi/project/AI-web/raspberrypi/servo-sse/servo_sse.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
