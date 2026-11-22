@@ -6,6 +6,7 @@ import logging
 import os
 import time
 import urllib.request
+import ipaddress
 
 from gpiozero import Servo
 
@@ -40,14 +41,17 @@ def read_sse_events(response):
             data_lines.append(line[6:])
 
 
-def print_event(event):
+def print_event(timestamp, ip, method, path, status, agent):
     print("--- requirement ---", flush=True)
-    print(f"Time: {event.get('timestamp', 'N/A')}", flush=True)
-    print(f"IP: {event.get('client_ip', 'N/A')}", flush=True)
-    print(f"Method: {event.get('method', 'N/A')}", flush=True)
-    print(f"Path: {event.get('path', 'N/A')}", flush=True)
-    print(f"Status: {event.get('status', 0)}", flush=True)
-    print(f"Agent: {event.get('user_agent', 'N/A')}", flush=True)
+    print(f"Time: {timestamp}", flush=True)
+    print(f"IP: {ip}", flush=True)
+    print(f"Method: {method}", flush=True)
+    print(f"Path: {path}", flush=True)
+    print(f"Status: {status}", flush=True)
+    print(f"Agent: {agent}", flush=True)
+    ip_seed = int(ipaddress.ip_address(ip))
+    print(f"IP Seed: {ip_seed}", flush=True)
+
     print("--------------------", flush=True)
 
 
@@ -77,8 +81,15 @@ def run():
                 for event in read_sse_events(response):
                     if not isinstance(event, dict):
                         continue
+                    timestamp = event.get('timestamp', 'N/A')
+                    ip = event.get('client_ip', 'N/A')
+                    method = event.get('method', 'N/A')
+                    path = event.get('path', 'N/A')
+                    status = event.get('status', 0)
+                    agent = event.get('user_agent', 'N/A')
+                    
 
-                    print_event(event)
+                    print_event(timestamp, ip, method, path, status, agent)
 
                     if current_position == REST_POSITION:
                         current_position = ACTIVE_POSITION
