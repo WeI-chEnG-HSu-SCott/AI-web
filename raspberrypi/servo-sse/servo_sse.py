@@ -56,10 +56,10 @@ def print_event(timestamp, ip, method, path, status, agent, ip_seed):
 def run():
     servo1 = Servo(SERVO1_GPIO)
     servo2 = Servo(SERVO2_GPIO)
-    current_position = REST_POSITION
+    servos = [servo1, servo2]
 
-    servo1.value = current_position
-    servo2.value = current_position
+    for servo in servos:
+        servo.value = REST_POSITION
 
     logger.info("connecting to %s", SSE_URL)
 
@@ -89,14 +89,11 @@ def run():
                     
                     print_event(timestamp, ip, method, path, status, agent, ip_seed)
 
-                    if current_position == REST_POSITION:
-                        current_position = ACTIVE_POSITION
-                    else:
-                        current_position = REST_POSITION
-
-                    servo1.value = current_position
-                    servo2.value = current_position
+                    trigger_num = int(ip_seed%2)
+                    servos[trigger_num].value = ACTIVE_POSITION
                     time.sleep(MOVE_DELAY_SECONDS)
+                    servos[trigger_num].value = REST_POSITION
+
 
         except KeyboardInterrupt:
             servo1.detach()
