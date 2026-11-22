@@ -7,6 +7,7 @@ import os
 import time
 import urllib.request
 import ipaddress
+import hashlib
 
 from gpiozero import Servo
 
@@ -89,7 +90,9 @@ def run():
                     
                     print_event(timestamp, ip, method, path, status, agent, ip_seed)
 
-                    trigger_num = int(ip_seed%2)
+                    hash_int = int.from_bytes(hashlib.sha256(ip_seed).digest(), "big")
+                    trigger_num = int(hash_int%2)
+                    
                     servos[trigger_num].value = ACTIVE_POSITION
                     time.sleep(MOVE_DELAY_SECONDS)
                     servos[trigger_num].value = REST_POSITION
