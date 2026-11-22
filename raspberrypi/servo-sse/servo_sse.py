@@ -41,7 +41,7 @@ def read_sse_events(response):
             data_lines.append(line[6:])
 
 
-def print_event(timestamp, ip, method, path, status, agent):
+def print_event(timestamp, ip, method, path, status, agent, ip_seed):
     print("--- requirement ---", flush=True)
     print(f"Time: {timestamp}", flush=True)
     print(f"IP: {ip}", flush=True)
@@ -49,9 +49,7 @@ def print_event(timestamp, ip, method, path, status, agent):
     print(f"Path: {path}", flush=True)
     print(f"Status: {status}", flush=True)
     print(f"Agent: {agent}", flush=True)
-    ip_seed = int(ipaddress.ip_address(ip))
     print(f"IP Seed: {ip_seed}", flush=True)
-
     print("--------------------", flush=True)
 
 
@@ -87,9 +85,9 @@ def run():
                     path = event.get('path', 'N/A')
                     status = event.get('status', 0)
                     agent = event.get('user_agent', 'N/A')
+                    ip_seed = int(ipaddress.ip_address(ip))
                     
-
-                    print_event(timestamp, ip, method, path, status, agent)
+                    print_event(timestamp, ip, method, path, status, agent, ip_seed)
 
                     if current_position == REST_POSITION:
                         current_position = ACTIVE_POSITION
