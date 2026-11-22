@@ -42,7 +42,7 @@ def read_sse_events(response):
             data_lines.append(line[6:])
 
 
-def print_event(timestamp, ip, method, path, status, agent, ip_seed):
+def print_event(timestamp, ip, method, path, status, agent, ip_packed):
     print("--- requirement ---", flush=True)
     print(f"Time: {timestamp}", flush=True)
     print(f"IP: {ip}", flush=True)
@@ -50,7 +50,7 @@ def print_event(timestamp, ip, method, path, status, agent, ip_seed):
     print(f"Path: {path}", flush=True)
     print(f"Status: {status}", flush=True)
     print(f"Agent: {agent}", flush=True)
-    print(f"IP Seed: {ip_seed}", flush=True)
+    print(f"IP Packed: {ip_packed}", flush=True)
     print("--------------------", flush=True)
 
 
@@ -86,13 +86,13 @@ def run():
                     path = event.get('path', 'N/A')
                     status = event.get('status', 0)
                     agent = event.get('user_agent', 'N/A')
-                    ip_seed = int(ipaddress.ip_address(ip))
+                    ip_packed = ipaddress.ip_address(ip)
                     
-                    print_event(timestamp, ip, method, path, status, agent, ip_seed)
+                    print_event(timestamp, ip, method, path, status, agent, ip_packed)
 
-                    hash_int = int.from_bytes(hashlib.sha256(ip_seed).digest(), "big")
+                    hash_int = int.from_bytes(hashlib.sha256(ip_packed).digest(), "big")
                     trigger_num = int(hash_int%2)
-                    
+
                     servos[trigger_num].value = ACTIVE_POSITION
                     time.sleep(MOVE_DELAY_SECONDS)
                     servos[trigger_num].value = REST_POSITION
