@@ -15,9 +15,10 @@ Environment=SERVO2_GPIO=19
 Environment=REST_POSITION=-1
 Environment=ACTIVE_POSITION=1
 Environment=MOVE_DELAY_SECONDS=0.4
-ExecStart=/usr/bin/python3 /home/pi/project/AI-web/raspberrypi/servo-sse/servo_sse.py
+ExecStart=/usr/bin/python3 -u /home/pi/project/AI-web/raspberrypi/servo-sse/servo_sse.py
 Restart=always
 RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
+

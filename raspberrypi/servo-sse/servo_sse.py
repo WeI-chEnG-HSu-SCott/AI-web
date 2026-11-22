@@ -41,14 +41,14 @@ def read_sse_events(response):
 
 
 def print_event(event):
-    print("--- requirement ---")
-    print(f"Time: {event.get('timestamp', 'N/A')}")
-    print(f"IP: {event.get('client_ip', 'N/A')}")
-    print(f"Method: {event.get('method', 'N/A')}")
-    print(f"Path: {event.get('path', 'N/A')}")
-    print(f"Status: {event.get('status', 0)}")
-    print(f"Agent: {event.get('user_agent', 'N/A')}")
-    print("--------------------")
+    print("--- requirement ---", flush=True)
+    print(f"Time: {event.get('timestamp', 'N/A')}", flush=True)
+    print(f"IP: {event.get('client_ip', 'N/A')}", flush=True)
+    print(f"Method: {event.get('method', 'N/A')}", flush=True)
+    print(f"Path: {event.get('path', 'N/A')}", flush=True)
+    print(f"Status: {event.get('status', 0)}", flush=True)
+    print(f"Agent: {event.get('user_agent', 'N/A')}", flush=True)
+    print("--------------------", flush=True)
 
 
 def run():
