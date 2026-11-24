@@ -4,24 +4,25 @@ All public-facing articles must be written in English.
 
 ## Purpose and editorial standard
 
-The priority of the articles section is to create high-traffic content. We may research high-interest questions, widely searched topics, mass-produced, and sensational content. 
-Every article must add a clear contribution: news of AI, an observation, an diagram or image, a useful comparison, a carefully scoped interpretation. Search, SEO, and GEO (generative-engine optimization) are the purpose.
+Articles exist to answer a real reader question accurately and clearly. Traffic, SEO, and GEO are distribution outcomes, not the reason to publish. Do not mass-produce thin rewrites, manufacture urgency, use clickbait, or make claims that cannot be checked.
+
+Every article must add a clear contribution: a sourced observation, an original diagram or image, a useful comparison, a documented workflow, or a carefully scoped interpretation. When a page describes a tool we have not used, present it as a researched overview—not a hands-on review—and never invent testing results, pricing, performance figures, user counts, or endorsements.
 
 ## How to choose and shape a high-reach article
 
-1. Search the Internet for high-touch content, or select high-touch content based on your database. The content can be but is not limited to recently discussed open source resources, news and current affairs, scientific research, technological development, etc.
-2. After locking in the topic and content of the article, make sure to fact-check it. Write and promote this content without violating plagiarism ethics. 
-3. State the answer or key observation near the beginning, then use a descriptive title, one `<h1>`, logical `<h2>` sections, short paragraphs, and descriptive link text. Use the language readers would naturally use, without keyword stuffing.
+1. Define one target query and reader intent. Research the live SERP: read the top results that are accessible, note their format and gaps, and select the appropriate content type (definition, how-to, comparison, listicle, news, or another intent-matched form).
+2. Fact-check against primary sources such as official documentation, a project repository, a standards body, or the original paper. Record the publication or access date when freshness matters. Do not turn a directory listing, a README, or a search snippet into proof of effectiveness.
+3. State the direct answer in the first 100 words. Use a descriptive title, one `<h1>`, logical `<h2>` sections, short paragraphs, and descriptive links. Put a 40–60 word answer below the most important heading when it accurately answers a definition-style query.
 4. Add original value beyond the sources: a labelled diagram, a captioned image, an example, an experiment, a comparison table, or a clearly marked interpretation. Never present inference as a measured fact.
-5. Cite the source beside the claim it supports. Read the source rather than relying on a search snippet. Use licensed, self-made, or public-domain images only, and include attribution where required.
-6. Make trust visible: show the publisher/author where appropriate, the publication date, any material update date, the method used, and limits or uncertainty. For every published article, the visible byline and JSON-LD `author.name` must be exactly `the bug breeder`; do not use a personal name. High-stakes health, legal, financial, or safety advice is out of scope unless independently reviewed by a qualified expert.
+5. Cite the source beside the claim it supports. Write afresh; do not copy or lightly paraphrase a source. Use licensed, self-made, or public-domain images only, and include attribution where required.
+6. Make trust visible: include the research method, publication date, limits, and any material update date. For every published article, the visible byline and JSON-LD `author.name` must be exactly `the bug breeder`; do not use a personal name. High-stakes health, legal, financial, or safety advice is out of scope unless independently reviewed by a qualified expert.
 
 ## Create an article
 
 1. Copy `public/articles/example.html` and name the new file with lowercase English and hyphens, for example `public/articles/how-requests-become-signals.html`.
 2. Update the English `<title>` and `meta name="description"`; both must be accurate, specific, and unique. Keep the site name in the title.
 3. Replace the article's JSON-LD values (`headline`, `description`, `datePublished`, and `dateModified` when applicable) with the real article details. Dates use ISO 8601 format (`YYYY-MM-DD`). Do not change a date merely to appear fresh.
-4. Update the visible headline, standfirst, published date, image/figure, image alt text, and body. Keep one `<h1>` only. Use a real source list and a `Limits` section when claims depend on a method or incomplete evidence.
+4. Update the visible headline, standfirst, published date, image/figure, image alt text, body, and JSON-LD type. Keep one `<h1>` only. Use a real source list, a `Research note` or methodology statement, and a `Limits` section when claims depend on incomplete evidence. Use `Article` or `DefinedTerm` schema for explainers; reserve `Review` schema for genuine first-hand product reviews.
 5. Images live in `public/assets/images/`. Give informative images meaningful English `alt` text; decorative images use `alt=""`. Captions must explain why the image matters.
 6. Preserve the article header and footer exactly as in `public/index.html`, adjusting only relative paths (`../`). Immediately below the header, keep the `article-pagination` navigation. Set `Previous article` and `Next article` to neighbouring published items; at either end, use `Archive` in place of the missing direction.
 
