@@ -1,53 +1,53 @@
 body {
   background: #000;
-  color: #61cf5a;
+  color: #97e6ff;
   color-scheme: dark;
   font-family: "superscore-vf", sans-serif;
 }
 
 h1 {
-  color: #61cf5a;
+  color: #97e6ff;
   font-family: "superscore-vf", sans-serif;
   font-weight: 700;
 }
 
 h2 {
-  color: #63ad58;
+  color: #0afefe;
 }
 
 h3 {
-  color: #50864c;
+  color: #1645f7;
 }
 
 p,
 footer {
-  color: #63ad58;
+  color: #0afefe;
 }
 
 a {
-  color: #61cf5a;
+  color: #97e6ff;
 }
 
 a:visited {
-  color: #50864c;
+  color: #1645f7;
 }
 
 a:hover {
-  color: #63ad58;
+  color: #0afefe;
 }
 
 a:focus-visible {
-  outline: 2px solid #61cf5a;
+  outline: 2px solid #97e6ff;
   outline-offset: 3px;
 }
 
 ::selection {
-  background: #61cf5a;
+  background: #97e6ff;
   color: #000;
 }
 
 code {
-  color: #3e6a3d;
+  color: #0f46a0;
 }
 
 main,
@@ -94,7 +94,7 @@ footer {
 }
 
 .article-pagination {
-  border-block: 1px solid #3e6a3d;
+  border-block: 1px solid #0f46a0;
   margin-top: 1rem;
   padding-block: 0.75rem;
 }
@@ -107,12 +107,12 @@ footer {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid #3e6a3d;
+  border: 1px solid #0f46a0;
 }
 
 figcaption {
   margin-top: 0.65rem;
-  color: #63ad58;
+  color: #0afefe;
 }
 
 .article-list {
@@ -125,8 +125,8 @@ figcaption {
 
 
 .flux-title {
-  color: #61cf5a;
-  text-shadow: 2px 2px 0 #3b4b33;
+  color: #97e6ff;
+  text-shadow: 2px 2px 0 #0b224b;
   font-family: "superscore-vf", sans-serif;
   font-size: clamp(2rem, 7vw, 6rem);
   font-weight: 700;
